@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken")
 
 const createUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
     if (!name || !email || !password)
       return res
         .status(403)
@@ -19,11 +19,13 @@ const createUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      role
     });
     return res.status(201).json({ message: "User created succesfully", data:{
         id: user._id,
         name: user.name, 
-        email: user.email
+        email: user.email,
+        role:user.role
     } });
   } catch (error) {
     console.log(error)
