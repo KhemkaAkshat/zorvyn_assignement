@@ -1,6 +1,6 @@
 const express = require("express")
 const { protect, authorize } = require("../middleware/auth")
-const { createTransaction, getTransaction, updateTransaction, deleteTransaction } = require("../controller/Transaction.controller")
+const { createTransaction, getTransaction, updateTransaction, deleteTransaction } = require("../controller/transaction.controller")
 const router = express.Router()
 
 
