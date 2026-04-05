@@ -33,7 +33,7 @@ const getTransaction = async(req, res)=>{
         const skip = ( page-1 ) * limitNum;
         const txn = await TransactionModel.find(filter).skip(skip).limit(limitNum)
         const total = await TransactionModel.countDocuments(filter)
-        return res.status(200).json({message:"Trancations fetched ", page: pageNum, data: txn})
+        return res.status(200).json({message:"Trancations fetched ", page: pagenum, totalTransaction: total, data: txn})
     } catch (error) {
         console.log(error)
         return res.status(500).json({message:"Internal server error"})
