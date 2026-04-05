@@ -5,6 +5,12 @@
 https://zorvyn-assignement.onrender.com
 
 ---
+## Live Documentation
+
+https://dark-escape-794411.docs.buildwithfern.com
+
+---
+
 
 ## Overview
 
