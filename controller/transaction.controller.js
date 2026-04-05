@@ -22,12 +22,18 @@ const createTransaction = async(req, res)=>{
 
 const getTransaction = async(req, res)=>{
     try {
-        const {type, category} = req.query
+        const {type, category, search, page=1, limit=10} = req.query
         const filter = {}
         if(type) filter.type = type;
         if(category) filter.category = category
-        const txn = await TransactionModel.find(filter)
-        return res.status(200).json({message:"Trancations fetched ", data: txn})
+
+        if(search) filter.note = {$regex: search, $option:'i'}
+        const pagenum = Number(page) || 1
+        const limitNum = Number(limit) || 10
+        const skip = ( page-1 ) * limitNum;
+        const txn = await TransactionModel.find(filter).skip(skip).limit(limitNum)
+        const total = await TransactionModel.countDocuments(filter)
+        return res.status(200).json({message:"Trancations fetched ", page: pageNum, data: txn})
     } catch (error) {
         console.log(error)
         return res.status(500).json({message:"Internal server error"})

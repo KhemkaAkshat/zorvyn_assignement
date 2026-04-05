@@ -6,6 +6,7 @@ const protect = (req, res, next)=>{
         if(!token) return res.status(401).json({message:"Unauthorized, no token"})
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
         req.user = decoded
+        // if(!user.isActive) return res.status(403).json({message:"User is inactive"})
         next();
 
     } catch (error) {
