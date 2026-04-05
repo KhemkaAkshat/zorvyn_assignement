@@ -49,7 +49,7 @@ JWT_SECRET=your_secret_key
 ### 4. Run the Server
 
 ```bash
-npm run dev
+npm start
 ```
 
 ---
@@ -60,7 +60,7 @@ npm run dev
 * Pass token in headers:
 
 ```http
-Authorization: Bearer <token>
+Authorization: <token>
 ```
 
 ---
@@ -136,7 +136,6 @@ GET /dashboard/trends
 ## Project Structure
 
 ```
-src/
  ├── controllers/
  ├── routes/
  ├── models/
